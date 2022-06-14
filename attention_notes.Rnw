@@ -1,0 +1,107 @@
+\documentclass{article}
+\usepackage[portrait, headheight = 0cm, margin=0.25cm, top = 0.25cm]{geometry} 
+\usepackage[export]{adjustbox} 
+\usepackage{color}   %May be necessary if you want to color links
+\usepackage{graphicx}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{hyperref}
+\usepackage{anyfontsize}
+\usepackage{microtype}
+\usepackage{xfrac}
+\hypersetup{
+    colorlinks=true, %set true if you want colored links
+    linktoc=all,     %set to all if you want both sections and subsections linked
+    linkcolor=blue,  %choose some color if you want links to stand out
+}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{calc}
+\usepackage{amsmath}
+\usepackage{epigraph}
+\usepackage{lmodern}
+\usepackage{sparklines}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{pdfpages}
+
+<<,cache=FALSE, eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE, results="hide">>=
+# Nick
+# Wata5472Zowo9173
+# https://maple-rs.ukwest.cloudapp.azure.com/rstudio/
+# nassuphis
+require(Matrix)
+require(scales)
+require(roll)
+require(Hmisc)
+require(magrittr)
+require(matrixStats)
+require(magrittr)
+require(readr)
+require(rlang)
+require(purrr)
+require(glue)
+require(stringr)
+require(tidyr)
+require(tibble)
+require(dplyr)
+require(ggplot2)
+require(highr)
+require(qpdf)
+
+options(width=100) 
+doc_timestamp<-latexTranslate(str_sub(timestamp(),10,33))
+
+
+x<-list.files(path="figure",pattern="(pdf|png|jpeg)$",full.names = TRUE)
+res<-file.remove(x)
+
+
+@
+
+<<,cache=FALSE, eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE, results="hide">>=
+source("latex/latex_table.R")
+source("latex/latex_plot.R")
+@
+
+\title{
+  \vskip 5cm
+  {\bf\Huge Notes: Attention} \\
+  \vskip 1cm
+  \begin{center}
+  \includegraphics[height=10cm,width=10cm]{images/attention.png}
+  \end{center}
+  \vskip 1cm
+}
+\date{ \Sexpr{doc_timestamp}}
+\author{Nick Nassuphis}
+
+\begin{document}
+\maketitle
+
+\newpage
+\label{sec:toc}
+\tableofcontents
+
+
+\newpage
+\section{Vaswani(2017): Attention is all you need}
+\begin{center}
+\fbox{\Sexpr{make_pdf_page("papers/attention.pdf",1,"15cm","15cm")}}
+\end{center}
+
+
+\end{document}
+
